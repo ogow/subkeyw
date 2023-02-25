@@ -1,4 +1,21 @@
-# TBD
+
+ ```
+            _     _                       
+           | |   | |                      
+  ___ _   _| |__ | | _____ _   ___      __
+ / __| | | | '_ \| |/ / _ \ | | \ \ /\ / /
+ \__ \ |_| | |_) |   <  __/ |_| |\ V  V / 
+ |___/\__,_|_.__/|_|\_\___|\__, | \_/\_/  
+                            __/ |         
+                           |___/          
+ ```
+
+
+## Installing
+
+```bash
+$ go install -v github.com/dvvedz/subkeyw@latest
+```
 
 ## Usage
 ```text
@@ -29,12 +46,6 @@ a
 blah
 meh
 dev
-```
-
-## Installing
-
-```bash
-$ go install -v github.com/dvvedz/subkeyw@latest
 ```
 
 ## Usage
