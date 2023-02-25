@@ -61,12 +61,6 @@ func readInput(stdin bool, file string) []string {
 			log.Fatal("scanner error")
 		}
 	} else {
-		// if len(file) {
-		// fmt.Println("you need to provide a file as argument or trough stdin")
-		// fmt.Println("")
-		// flag.Usage()
-		// os.Exit(1)
-		// }
 		f, err := os.Open(file)
 		if err != nil {
 			log.Fatal("os.Open()", err)
@@ -100,14 +94,3 @@ func inputStdin() bool {
 		return false
 	}
 }
-
-// func printHelp() {
-// fmt.Println("Usage: subkeyw file.txt")
-// fmt.Println("Flags:")
-// fmt.Println("-h\t Help menu")
-// fmt.Println("-dashes\t inlcude words with dashes")
-// fmt.Println("e.g.")
-// fmt.Println("\tcat file.txt | subkeyw")
-// fmt.Println("\tsubkeyw file.txt")
-// os.Exit(1)
-// }
