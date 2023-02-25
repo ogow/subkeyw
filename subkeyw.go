@@ -11,6 +11,7 @@ import (
 func main() {
 
 	i := inputStdin()
+	fmt.Println(i)
 	data := readInput(i)
 
 	for _, d := range data {
