@@ -13,7 +13,7 @@ import (
 
 func main() {
 
-	dashes := flag.Bool("dashes", false, "include words with dashes, otherwise it removes them from output")
+	dashes := flag.Bool("dashes", false, "include words with dashes, otherwise these are removed")
 	file := flag.String("file", "", "takes a file with a list of subdomains")
 
 	flag.Parse()
