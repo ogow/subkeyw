@@ -57,3 +57,7 @@ $ cat subs.txt | subkeyw
 ```bash
 $ subkeyw -file subs.txt
 ```
+
+## Known problems
+
+For some reason stdin does not work on my droplet, but works fine on macos as intended...
