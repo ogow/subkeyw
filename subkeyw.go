@@ -1,4 +1,4 @@
-package subkeyw
+package main
 
 import (
 	"bufio"
