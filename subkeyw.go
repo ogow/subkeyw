@@ -21,7 +21,7 @@ func main() {
 	var all []string
 	i := inputIsStdin()
 
-	if len(*file) < 1 && i == false {
+	if *file == "" && i == false {
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -89,8 +89,11 @@ func inputIsStdin() bool {
 	}
 	size := fi.Size()
 	if size > 0 {
+		// from stdin
 		return true
 	} else {
+		// not from stdin
 		return false
 	}
+
 }
