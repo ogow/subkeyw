@@ -19,7 +19,7 @@ func main() {
 	flag.Parse()
 
 	var all []string
-	i := inputStdin()
+	i := inputIsStdin()
 
 	if len(*file) < 1 && i == false {
 		flag.Usage()
@@ -81,11 +81,11 @@ func readInput(stdin bool, file string) []string {
 	return sl
 }
 
-func inputStdin() bool {
+func inputIsStdin() bool {
 	file := os.Stdin
 	fi, err := file.Stat()
 	if err != nil {
-		fmt.Println("file.Stat()", err)
+		log.Fatal("file.Stat()", err)
 	}
 	size := fi.Size()
 	if size > 0 {
