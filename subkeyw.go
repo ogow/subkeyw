@@ -21,7 +21,7 @@ func main() {
 	var all []string
 	i := inputIsStdin()
 
-	if *file == "" && i == false {
+	if *file == "" && !i {
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -37,9 +37,7 @@ func main() {
 				all = append(all, e)
 			}
 			sep2 := strings.Split(e, "-")
-			for _, ee := range sep2 {
-				all = append(all, ee)
-			}
+			all = append(all, sep2...)
 		}
 	}
 
@@ -82,18 +80,23 @@ func readInput(stdin bool, file string) []string {
 }
 
 func inputIsStdin() bool {
-	file := os.Stdin
-	fi, err := file.Stat()
-	if err != nil {
-		log.Fatal("file.Stat()", err)
-	}
-	size := fi.Size()
-	if size > 0 {
-		// from stdin
+	stat, _ := os.Stdin.Stat()
+	if (stat.Mode() & os.ModeCharDevice) == 0 {
 		return true
 	} else {
-		// not from stdin
 		return false
 	}
-
+	// file := os.Stdin
+	// fi, err := file.Stat()
+	// if err != nil {
+	// log.Fatal("file.Stat()", err)
+	// }
+	// size := fi.Size()
+	// if size > 0 {
+	// // from stdin
+	// return true
+	// } else {
+	// // not from stdin
+	// return false
+	// }
 }
