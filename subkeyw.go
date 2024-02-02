@@ -6,15 +6,15 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"strings"
-
-	"github.com/dvvedz/uniques"
 )
 
 func main() {
 
 	dashes := flag.Bool("dashes", false, "include words with dashes, otherwise these are removed")
 	file := flag.String("file", "", "takes a file with a list of subdomains")
+	frequency := flag.Bool("frequency", false, "print how many times a word occurred")
 
 	flag.Parse()
 
@@ -33,6 +33,7 @@ func main() {
 		sep = sep[:len(sep)-2]
 
 		for _, e := range sep {
+			e = strings.TrimSpace(e)
 			if *dashes {
 				all = append(all, e)
 			}
@@ -41,10 +42,33 @@ func main() {
 		}
 	}
 
-	us := uniques.StringSlice(all)
-	for _, e := range us {
-		fmt.Println(e)
+	counts := occurrenceOfElement(all)
+
+	keys := make([]string, 0, len(counts))
+	for key := range counts {
+		keys = append(keys, key)
 	}
+
+	sort.Slice(keys, func(i, j int) bool { return counts[keys[i]] < counts[keys[j]] })
+
+	for _, key := range keys {
+		if key != "" {
+			if *frequency {
+				fmt.Println(counts[key], key)
+			} else {
+				fmt.Println(key)
+			}
+		}
+	}
+
+}
+
+func occurrenceOfElement(arr []string) map[string]int {
+	dict := make(map[string]int)
+	for _, ele := range arr {
+		dict[ele] = dict[ele] + 1
+	}
+	return dict
 }
 
 func readInput(stdin bool, file string) []string {
